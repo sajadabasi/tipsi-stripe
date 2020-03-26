@@ -186,6 +186,18 @@ public class StripeModule extends ReactContextBaseJavaModule {
     getPayFlow().deviceSupportsAndroidPay(true, promise);
   }
 
+
+  @ReactMethod
+  public void setStripeAccount(final String stripeAccount) {
+    ArgCheck.notEmptyString(mPublicKey);
+    if (stripeAccount == null) {
+      mStripe = new Stripe(getReactApplicationContext(), mPublicKey);
+    } else {
+      mStripe = new Stripe(getReactApplicationContext(), mPublicKey, stripeAccount);
+    }
+  }
+
+
   @ReactMethod
   public void createTokenWithCard(final ReadableMap cardData, final Promise promise) {
     try {
