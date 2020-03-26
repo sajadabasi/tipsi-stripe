@@ -1,3 +1,6 @@
+# clone details 
+- add connect and pyament intent
+
 # tipsi-stripe
 
 [![npm version](https://img.shields.io/npm/v/tipsi-stripe.svg?style=flat-square)](https://www.npmjs.com/package/tipsi-stripe)
@@ -26,6 +29,19 @@ p.s. if you are skilled at writing Appium tests, please raise your hand on the c
 
 Cheers!
 
+
+### Usage with Stripe Connect	
+
+If you're using [Stripe Connect](https://stripe.com/docs/connect) and need to set a `stripeAccount` do the following:	
+
+```js
+stripe.setStripeAccount('<ACCT_>');	
+```
+
+when you're done doing operations on the stripe connected account do:
+```js
+stripe.setStripeAccount(null);
+```
 
 ## Documentation
 

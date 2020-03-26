@@ -11,6 +11,8 @@ import CustomCardScreen from './scenes/CustomCardScreen'
 import CustomBankScreen from './scenes/CustomBankScreen'
 import CardTextFieldScreen from './scenes/CardTextFieldScreen'
 import SourceScreen from './scenes/SourceScreen'
+import PaymentIntentScreen from './scenes/PaymentIntentScreen'
+import SetupIntentScreen from './scenes/SetupIntentScreen'
 import testID from './utils/testID'
 
 stripe.setOptions({
@@ -18,6 +20,11 @@ stripe.setOptions({
   merchantId: '<MERCHANT_ID>',
   androidPayMode: 'test',
 })
+
+
+// can also be set to null if you want to clear
+stripe.setStripeAccount('<STRIPE_ACCOUNT>')
+
 
 export default class Root extends PureComponent {
   state = {
@@ -33,7 +40,9 @@ export default class Root extends PureComponent {
       CustomBankScreen,
       CardTextFieldScreen,
       SourceScreen,
-    ].filter(item => item),
+      PaymentIntentScreen,
+      SetupIntentScreen,
+    ].filter((item) => item),
   }
 
   getCurrentScene = () => this.state.routes[this.state.index]
@@ -91,7 +100,8 @@ export default class Root extends PureComponent {
           renderNavigationView={this.renderNavigation}
           onDrawerOpen={this.handleDrawerOpen}
           onDrawerClose={this.handleDrawerClose}
-          ref={this.handleDrawerRef}>
+          ref={this.handleDrawerRef}
+        >
           <Scene />
         </DrawerLayout>
       </View>
